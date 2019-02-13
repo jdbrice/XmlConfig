@@ -25,7 +25,7 @@ common_env.Append(CPPPATH		= paths)
 # common_env[ "_LIBFLAGS" ] = common_env[ "_LIBFLAGS" ] + " " + ROOTLIBS + " " 
 
 
-jdb_log_level = ARGUMENTS.get( "ll", 60 )
+jdb_log_level = ARGUMENTS.get( "ll", 0 )
 common_env.Append(CXXFLAGS 		= "-DJDB_LOG_LEVEL=" + str(jdb_log_level) )
 target = common_env.StaticLibrary( target='XmlConfig', source=[ "XmlConfig.cpp", "XmlString.cpp", "Logger.cpp", "Utils.cpp" ] )
 
