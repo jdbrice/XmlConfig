@@ -255,6 +255,8 @@ namespace jdb{
 	string XmlConfig::get( string path, string def ) const {
 		return getXString(path, def);
 	}
+
+
 	string XmlConfig::getString( string nodePath, string def ) const {
 		return getXString(nodePath, def);
 	}
