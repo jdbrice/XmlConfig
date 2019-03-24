@@ -3,7 +3,7 @@ import subprocess
 import os
 
 env = Environment()
-
+Export('env')
 cppDefines 		= {}
 cppFlags 		= ['-Wall' ]#, '-Werror']
 cxxFlags 		= ['-std=c++11', '-O3' ]
@@ -31,9 +31,19 @@ target = common_env.StaticLibrary( target='XmlConfig', source=[ "XmlConfig.cpp",
 
 # Depends( target, Glob( JDB_LIB + "/include/jdb/*" ) )
 
-# set as the default target
-Default( target )
+
 
 test = common_env.Program( target='unit', source=[ Glob("*.cpp")  ] )
 
 common_env.Alias( 'test', test )
+
+
+# Install the Header files and lib file:
+install = [
+    common_env.Install( '/usr/local/include/XmlConfig/', [Glob("*.h")] ),
+    common_env.Install( '/usr/local/lib', [Glob("*.a")] ) 
+]
+
+
+# set as the default target
+Default( target, install )
