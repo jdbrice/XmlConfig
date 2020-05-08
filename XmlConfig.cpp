@@ -9,7 +9,10 @@
 ClassImp( jdb::XmlConfig );
 #endif
 
+
 namespace jdb{
+
+
 
 	const string XmlConfig::declarationV1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
@@ -256,6 +259,8 @@ namespace jdb{
 		return getXString(path, def);
 	}
 
+	
+
 
 	string XmlConfig::getString( string nodePath, string def ) const {
 		return getXString(nodePath, def);
@@ -432,6 +437,12 @@ namespace jdb{
 	bool XmlConfig::get( string path, bool def ) const {
 		return getBool(path, def);
 	}
+
+	template <>
+	vector<string> XmlConfig::getVector( string path ) const {
+		return getStringVector( path );
+	}
+
 	bool XmlConfig::getBool( string nodePath, bool def  ) const{
 
 		string str = getXString( nodePath );
@@ -1408,8 +1419,5 @@ namespace jdb{
 		DEBUGC( sMap );
 		return over;
 	}
-
-
-
 
 }

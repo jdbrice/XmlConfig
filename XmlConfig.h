@@ -191,6 +191,22 @@ namespace jdb {
 			return result;
 		}
 
+		template <typename T>
+		vector<T> getVector( string path ) const {
+			vector<string> sv = getStringVector( path );
+			vector<T> resultv;
+			for ( size_t i = 0; i < sv.size(); i++ ){
+				stringstream sstr;
+				sstr << sv[i];
+				T result;
+				sstr >> result;
+				resultv.push_back( result );
+			}
+
+			return resultv;
+		}
+
+
 
 
 		/* Set operator
