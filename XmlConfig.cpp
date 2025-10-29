@@ -1,7 +1,4 @@
 #include "XmlConfig.h"
-
-
-
 #include "XmlString.h"
 #include "Utils.h"
 
@@ -451,6 +448,7 @@ namespace jdb{
 		// push to lower case
 		//std::transform( str.begin(), str.end(), str.begin(), std::tolower );
 		str = manualToLower( str );
+
 		if ( str == "false" )
 			return false;
 		if ( str == "true" )
@@ -1062,9 +1060,12 @@ namespace jdb{
 		xml += nl + ind + "<" + tn;
 
 		map<string, string> attrs = attributesMap( nodePath );
-		// add attributes
+		// add attributes TODO escape characters!
 		for (auto a : attrs){
-			xml += ( " " + a.first + "=\"" + a.second + "\"" );
+            if ( a.second.find( "\"" ) != std::string::npos )
+			    xml += ( " " + a.first + "=\'" + a.second + "\'" );
+            else 
+                xml += ( " " + a.first + "=\"" + a.second + "\"" );
 		}			
 
 		// Close tag inline or allow contents
