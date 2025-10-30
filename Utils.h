@@ -59,7 +59,7 @@ namespace jdb{
 	 * 
 	 * @return the string representation of the value
 	 */
-	std::string ts( size_t u, int len  = -1);
+	// std::string ts( size_t u, int len  = -1);
 
 	/* Removes trailing zeros
 	 * @in string representation of a number

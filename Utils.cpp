@@ -50,12 +50,12 @@ namespace jdb{
 	 * @len the maximum length of string
 	 * @return the string representation of the value
 	 */
-	std::string ts( size_t u, int len ){
-		if ( len <= -1 )
-			return to_string( u);
-		else 
-			return (to_string(u)).substr( 0, len );
-	}
+	// std::string ts( size_t u, int len ){
+	// 	if ( len <= -1 )
+	// 		return to_string( u);
+	// 	else 
+	// 		return (to_string(u)).substr( 0, len );
+	// }
 
 	/* Removes trailing zeros
 	 * @in string representation of a number
